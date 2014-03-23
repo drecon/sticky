@@ -17,7 +17,9 @@
       className: 'is-sticky',
       wrapperClassName: 'sticky-wrapper',
       center: false,
-      getWidthFrom: ''
+      getWidthFrom: '',
+	  unFix: function(){},
+	  fix: function(){}
     },
     $window = $(window),
     $document = $(document),
@@ -40,6 +42,8 @@
               .css('position', '')
               .css('top', '');
             s.stickyElement.parent().removeClass(s.className);
+			s.unFix();
+				
             s.currentTop = null;
           }
         }
@@ -62,6 +66,7 @@
 
             s.stickyElement.parent().addClass(s.className);
             s.currentTop = newTop;
+			s.fix();
           }
         }
       }
@@ -98,7 +103,9 @@
             currentTop: null,
             stickyWrapper: stickyWrapper,
             className: o.className,
-            getWidthFrom: o.getWidthFrom
+            getWidthFrom: o.getWidthFrom,
+            fix: o.fix,
+            unFix: o.unFix
           });
         });
       },
