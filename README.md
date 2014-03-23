@@ -19,7 +19,15 @@ This is how it works:
 <script src="jquery.sticky.js"></script>
 <script>
   $(document).ready(function(){
-    $("#sticker").sticky({topSpacing:0});
+    $("#sticker").sticky({
+      topSpacing:0,
+      fix: function(){
+        console.log("fix!");
+      },
+      unfix: function(){
+        console.log("unfix!");
+      }
+    });
   });
 </script>
 ```
